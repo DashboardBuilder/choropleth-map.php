@@ -34,6 +34,90 @@ Refer 'Getting Started' section on https://www.dashboardbuilder.net/documentatio
 
 Refer 'Support' on https://www.dashboardbuilder.net/support for queries and support.
 
+RESULT
+------
+<img src="Choropleth-Map-in-PHP.png"/>
+
+PHP CODE
+-------
+<pre>
+/**
+ * DashboardBuilder
+ *
+ * @author Diginix Technologies www .diginixtech .com
+ * Support &lt;support @ dashboardbuider.net&gt; - http: // www. dashboardbuilder .net
+ * @copyright (C) 2017 Dashboardbuilder.net
+ * @version 1.0.1
+ * @license: license.txt
+ */
+
+include(&quot;inc/dashboard_dist.php&quot;);  // copy this file to inc folder
+
+
+// for chart #1
+$data = new dashboardbuilder(); 
+$data-&gt;type =  &quot;map&quot;;
+$data-&gt;source =  &quot;Database&quot;; 
+$data-&gt;rdbms =  &quot;sqlite&quot;; 
+$data-&gt;servername =  &quot;&quot;;
+$data-&gt;username =  &quot;&quot;;
+$data-&gt;password =  &quot;&quot;;
+$data-&gt;dbname =  &quot;datacountry.db&quot;;
+$data-&gt;xaxisSQL[0]=  &quot;SELECT CODE FROM  GDP&quot;;
+$data-&gt;xaxisCol[0]=  &quot;CODE&quot;;
+$data-&gt;yaxisSQL[0]=  &quot;SELECT GDP FROM  GDP&quot;;
+$data-&gt;yaxisCol[0]=  &quot;GDP&quot;;
+$data-&gt;textSQL[0]=  &quot;SELECT COUNTRY FROM  GDP&quot;;
+$data-&gt;textCol[0]=  &quot;COUNTRY&quot;;
+$data-&gt;name = &quot;map&quot;;
+$data-&gt;title = &quot;&quot;;
+$data-&gt;orientation = &quot;&quot;;
+$data-&gt;xaxistitle = &quot;&quot;;
+$data-&gt;yaxistitle = &quot;&quot;;
+$data-&gt;showgrid = &quot;&quot;;
+$data-&gt;showline = &quot;&quot;;
+$data-&gt;height = &quot;&quot;;
+$data-&gt;width = &quot;&quot;;
+
+
+$result[0] = $data-&gt;result();
+
+?&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt; 
+&lt;head&gt; 
+	&lt;script src=&quot;assets/js/dashboard.min.js&quot;&gt;&lt;/script&gt; &lt;!-- copy this file to assets/js folder --&gt; 
+	&lt;!--&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/bootstrap.min.css&quot;&gt; Bootstrap CSS file, change the path accordingly --&gt; 
+
+&lt;style&gt;
+&lt;!-- adjust the height width as per your need --&gt;;
+/*
+#col0{
+height:350px;
+}
+#col1{
+height:350px;
+}
+*/
+&lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt; 
+
+&lt;div class=&quot;container&quot;&gt;
+&lt;div class=&quot;col-lg-12&quot;&gt;
+&lt;div class=&quot;panel panel-default&quot;&gt;
+&lt;div class=&quot;panel-heading&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;panel-body&quot;&gt;
+        &lt;?php echo $result[0];?&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+
+</pre>
 LICENSE
 -------
 Must read and agree LICENSE.txt before use.
